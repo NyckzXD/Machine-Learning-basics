@@ -30,3 +30,4 @@ tree.plot_tree(arvore, feature_names=caracteristicas, class_names= arvore.classe
 # %%
 proba = arvore.predict_proba([[1,1,1,1]])[0]
 pd.Series(proba, index=arvore.classes_)
+# %%
