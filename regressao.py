@@ -6,6 +6,7 @@ df = pd.read_excel("data/dados_cerveja_nota.xlsx")
 df.head()
 # %%
 from sklearn import linear_model
+from sklearn import tree
 
 X = df[['cerveja']] # dataframe
 y = df['nota']  # Series
@@ -20,6 +21,11 @@ print(a, b)
 
 # %%
 predict = reg.predict(X.drop_duplicates())
+arvore_full = tree.DecisionTreeRegressor(random_state=42)
+arvore_full.fit (X, y)
+
+predict_arvore_full = arvore_full.predict(X.drop_duplicates())
+
 # %%
 
 import matplotlib.pyplot as plt
@@ -30,4 +36,5 @@ plt.title("Relação Cerveja vs Nota")
 plt.xlabel("Cerveja")
 plt.ylabel("Nota")
 
+plt.plot(X.drop_duplicates()['cerveja'], predict_arvore_full)
 plt.plot(X.drop_duplicates()['cerveja'], predict)
